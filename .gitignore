@@ -1,0 +1,12 @@
+.venv/
+
+.env
+
+__pycache__/
+*.pyc
+
+docker-compose.override.yml
+Dockerfile
+
+.vscode/
+*.code-workspace

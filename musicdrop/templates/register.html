@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Регистрация</title>
+</head>
+<body>
+    <form id="registration-form">
+        <label for="username">Имя пользователя:</label><br>
+        <input type="text" id="username" name="username"><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email"><br>
+        <label for="password">Пароль:</label><br>
+        <input type="password" id="password" name="password"><br><br>
+        <button type="submit">Зарегистрироваться</button>
+    </form>
+
+    <script>
+        document.getElementById('registration-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const formData = {
+                username: document.getElementById('username').value,
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value
+            };
+
+            try {
+                const response = await fetch('/auth/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Ошибка при регистрации');
+                }
+
+                window.location.href = "/pages/"; // Redirect to home page
+            } catch (error) {
+                console.error(error);
+                alert('Произошла ошибка при регистрации');
+            }
+        });
+    </script>
+</body>
+</html>
