@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Request, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
-from musicdrop.likes.dao import LikeDAO
+from syncbeats.likes.dao import LikeDAO
 from fastapi_cache.decorator import cache
 
 router = APIRouter()
-templates = Jinja2Templates(directory="musicdrop/templates")
+templates = Jinja2Templates(directory="syncbeats/templates")
 
 clients = []
 

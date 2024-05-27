@@ -2,10 +2,10 @@ from typing import Optional
 from fastapi import Request, Depends 
 from jose import jwt, JWTError
 from exceptions import IncorrectTokenFormatException, TokenAbsentException, TokenExpiredException, UserIsNotPresentException
-from musicdrop.config import settings
+from syncbeats.config import settings
 from datetime import datetime, timezone 
-from musicdrop.users.dao import UsersDAO
-from musicdrop.users.models import Users
+from syncbeats.users.dao import UsersDAO
+from syncbeats.users.models import Users
 
 def get_token(request: Request):
     token = request.cookies.get("musicdrop_access_token")

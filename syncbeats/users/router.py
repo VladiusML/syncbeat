@@ -1,15 +1,15 @@
 from fastapi import APIRouter, Depends, Form, Response, status
 from fastapi.responses import HTMLResponse, RedirectResponse 
 from exceptions import UserAlreadyExistsException, IncorrectUsernameOrPasswordException
-from musicdrop.users.auth import create_access_token, get_password_hash, authenticate_user
-from musicdrop.users.dependencies import get_current_user
-from musicdrop.users.models import Users
-from musicdrop.users.dao import UsersDAO
+from syncbeats.users.auth import create_access_token, get_password_hash, authenticate_user
+from syncbeats.users.dependencies import get_current_user
+from syncbeats.users.models import Users
+from syncbeats.users.dao import UsersDAO
 from fastapi.templating import Jinja2Templates
 
-from musicdrop.users.schemas import SUserAuth, SUserLogin
+from syncbeats.users.schemas import SUserAuth, SUserLogin
 
-templates = Jinja2Templates(directory="musicdrop/templates")
+templates = Jinja2Templates(directory="syncbeats/templates")
 
 router = APIRouter(
     prefix = "/auth",
@@ -37,7 +37,8 @@ async def login_user(response: Response, user_data: SUserLogin):
 
 @router.post("/logout")
 async def logout_user(response: Response):
-    response.delete_cookie("musicdrop_access_token")
-    return RedirectResponse(url="/pages/login", status_code=status.HTTP_303_SEE_OTHER)
+    response = RedirectResponse(url="/", status_code=status.HTTP_303_SEE_OTHER)
+    response.delete_cookie("musicdrop_access_token", httponly=True)
+    return response
 
  

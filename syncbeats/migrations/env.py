@@ -9,10 +9,10 @@ from alembic import context
 
 sys.path.insert(0, dirname(dirname(dirname(__file__))))
 
-from musicdrop.database import Base 
-from musicdrop.users.models import Users
-from musicdrop.likes.models import Like
-from musicdrop.config import settings
+from syncbeats.database import Base 
+from syncbeats.users.models import Users
+from syncbeats.likes.models import Like
+from syncbeats.config import settings
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

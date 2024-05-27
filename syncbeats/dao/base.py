@@ -1,5 +1,5 @@
-from musicdrop.database import async_session_maker
-from musicdrop.users.models import Users
+from syncbeats.database import async_session_maker
+from syncbeats.users.models import Users
 
 from sqlalchemy import select, insert  
 

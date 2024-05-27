@@ -1,5 +1,5 @@
 from sqlalchemy import Column, ForeignKey, Integer
-from musicdrop.database import Base
+from syncbeats.database import Base
 from sqlalchemy.orm import relationship
 
 class Like(Base):

@@ -1,7 +1,7 @@
-from musicdrop.database import async_session_maker
-from musicdrop.likes.models import Like
+from syncbeats.database import async_session_maker
+from syncbeats.likes.models import Like
 from sqlalchemy import func, select, update
-from musicdrop.dao.base import BaseDAO
+from syncbeats.dao.base import BaseDAO
 
 class LikeDAO(BaseDAO):
     model = Like

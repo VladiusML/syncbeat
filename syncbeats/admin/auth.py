@@ -4,9 +4,9 @@ from starlette.requests import Request
 from starlette.responses import RedirectResponse
 
 from exceptions import IncorrectUsernameOrPasswordException
-from musicdrop.users.auth import authenticate_user, create_access_token
-from musicdrop.users.dependencies import get_current_user
-from musicdrop.config import settings
+from syncbeats.users.auth import authenticate_user, create_access_token
+from syncbeats.users.dependencies import get_current_user
+from syncbeats.config import settings
 
 class AdminAuth(AuthenticationBackend):
     async def login(self, request: Request) -> bool:

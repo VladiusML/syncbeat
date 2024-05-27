@@ -2,8 +2,8 @@ from passlib.context import CryptContext
 from datetime import datetime, timedelta, timezone 
 from jose import jwt
  
-from musicdrop.config import settings
-from musicdrop.users.dao import UsersDAO 
+from syncbeats.config import settings
+from syncbeats.users.dao import UsersDAO 
 
 pwd_content = CryptContext(schemes=["bcrypt"], deprecated = "auto")
 

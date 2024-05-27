@@ -5,8 +5,7 @@
 __pycache__/
 *.pyc
 
-docker-compose.override.yml
-Dockerfile
+.env-non-dev
 
 .vscode/
 *.code-workspace
