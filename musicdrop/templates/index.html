@@ -3,39 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
+    <title>SyncBeat</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="icon" href="/static/images/logo.svg" type="image/svg+xml">
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Roboto+Flex:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Welcome</h1>
-    {% if user %}
-        <p>Hello, {{ user.username }}!</p>
-        <a href="/pages/profile">Profile</a>
-        <form action="/auth/logout" method="post">
-            <button type="submit">Logout</button>
-        </form>
-    {% else %}
-        <a href="/pages/login">Login</a>
-        <a href="/pages/register">Register</a>
-    {% endif %}
-    
-    <p>Total Likes: <span id="total-like-count">{{ total_like_count }}</span></p>
+    <div class="container">
+        <header>
+            <nav>
+                <a class="nav-link" href="/pages/howtouse">How to use</a>
+                <h1>SyncBeat</h1>
+                <div class="auth-links">
+                    {% if user %}
+                        <p class="nav-link">Hello, {{ user.username }}!</p>
+                        <a class="nav-link" href="/pages/profile">Profile</a>
+                        <form action="/auth/logout" method="post">
+                            <button class="nav-link" type="submit">Logout</button>
+                        </form>
+                    {% else %}
+                        <div class="register-login">
+                            <a class="nav-link" href="/pages/login">Log In</a>
+                            <p>|</p>
+                            <a class="nav-link" href="/pages/register">Register</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </nav>
+        </header>
+        
+        <div>
+            <h2 class="curtime">Current Time</h2>
+            <p id="current-time"></p>
+        </div>
 
-    <button id="like-button">Like</button>
+        <div class="main-content"> <!-- Добавлено -->
+            <div class="input-group"> <!-- Добавлено -->
+                <input type="text" id="youtube-link" placeholder="Paste link:"> <!-- Изменено -->
+                <input type="text" id="video-timer" placeholder="Set time:"> <!-- Изменено -->
+            </div> <!-- Добавлено -->
+            <button class="btn" id="set-timer">Set Time</button>
+            <button  class="btn" id="play-youtube-video">Play</button>
+        </div> <!-- Добавлено -->
+        
+        <div id="video-container"></div>
 
-    <div>
-        <label for="youtube-link">YouTube Video Link:</label>
-        <input type="text" id="youtube-link" placeholder="Paste YouTube video link here">
-        <label for="video-timer">Video Timer (HH:MM):</label>
-        <input type="text" id="video-timer" placeholder="Enter video start time (HH:MM)">
-        <button id="set-timer">Set Timer</button>
-        <button id="play-youtube-video">Play</button>
-    </div>
+        <div class="like-section"> <!-- Добавлено -->
+            <p>Say "Thanks" to developers:</p>
+            <button id="like-button">Like</button>
+            <span id="total-like-count">{{ total_like_count }}</span>
+        </div> <!-- Добавлено -->
 
-    <div id="video-container"></div>
-
-    <div>
-        <h2>Current Time</h2>
-        <p id="current-time"></p>
     </div>
 
     <script src="/static/js/script.js"></script>

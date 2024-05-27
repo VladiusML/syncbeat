@@ -1,0 +1,256 @@
+
+
+
+
+
+/* howtouse */
+body {
+    font-family: 'Roboto Flex', sans-serif;
+    background-color: #1b1b1b;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.how-to-use-container {
+    max-width: 800px;
+    text-align: left;
+}
+
+h1 {
+    font-family: 'Poiret One', cursive;
+    font-size: 3rem;
+    color: #00bfff;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.how-to-use-section {
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-family: 'Poiret One', cursive;
+    font-size: 1.8rem;
+    color: #00bfff;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #ffffff;
+}
+
+
+/* login */
+body {
+    font-family: 'Roboto Flex', sans-serif;
+    background-color: #1b1b1b;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+form {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+label {
+    font-family: 'Poiret One', cursive;
+    color: #00bfff;
+    font-size: 1.2rem;
+}
+
+input {
+    background-color: #444;
+    border: 2px solid #00bfff;
+    color: #fff;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    width: 100%;
+}
+
+button {
+    background-color: #00bfff;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 12px;
+    width: 100%;
+}
+
+/* register */
+body {
+    font-family: 'Roboto Flex', sans-serif;
+    background-color: #1b1b1b;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+form {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 300px;
+}
+
+label {
+    font-family: 'Poiret One', cursive;
+    color: #00bfff;
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    background-color: #444;
+    border: 2px solid #00bfff;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+button {
+    background-color: #00bfff;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 12px;
+    width: 100%;
+}
+
+
+/* index */
+body {
+    font-family: 'Roboto Flex', sans-serif;
+    background-color: #1b1b1b;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    width: 80%;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.nav-link {
+    font-family: 'Poiret One', cursive;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+h1 {
+    font-family: 'Poiret One', cursive;
+    font-size: 3rem;
+    color: #00bfff;
+}
+
+.main-content {
+    margin: 50px 0;
+}
+
+.input-group {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    background-color: #333;
+    border: 2px solid #00bfff;
+    color: #fff;
+    padding: 10px;
+    margin: 0 10px;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.btn {
+    background-color: #00bfff;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+.like-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+#like-button {
+    background-color: #333;
+    border: 2px solid #00bfff;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#total-like-count {
+    font-size: 1.5rem;
+    color: #00bfff;
+    margin-left: 10px;
+}
+
+.register-login {
+    font-family: 'Poiret One', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-login a,
+.register-login p {
+    margin: 0 10px;
+}

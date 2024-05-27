@@ -41,6 +41,7 @@ app = FastAPI(lifespan=lifespan)
 
 app.mount("/static", StaticFiles(directory="musicdrop/static"), "static")
 
+
 app.include_router(router_users)
 app.include_router(router_pages)
 
