@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
  
-
+from syncbeats.config import settings
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 
@@ -30,7 +30,7 @@ origins = [
 
 @asynccontextmanager
 async def lifespan(app: FastAPI) -> AsyncIterator[None]:
-    redis = aioredis.from_url("redis://localhost")
+    redis = aioredis.from_url(f"redis://{settings.REDIS_HOST}:{settings.REDIS_PORT}")
     FastAPICache.init(RedisBackend(redis), prefix="cache")
     yield
 
