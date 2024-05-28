@@ -1,4 +1,4 @@
-name: "syncbeat"
+name: sync
 services:
   db: 
     image: postgres:16.3
@@ -22,6 +22,7 @@ services:
     depends_on:
       - db
       - redis
-    command: ["/syncbeats/docker/app.sh"]
+    command:
+      bash -c "alembic revision --autogenerate && alembic upgrade head && gunicorn syncbeats.main:app --workers 1 --worker-class uvicorn.workers.UvicornWorker --bind=0.0.0.0:8000"
     ports:
       - 9000:8000
