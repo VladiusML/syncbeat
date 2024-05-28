@@ -6,6 +6,7 @@ __pycache__/
 *.pyc
 
 .env-non-dev
+.env-render
 
 .vscode/
 *.code-workspace
