@@ -6,7 +6,8 @@
     <title>SyncBeat</title>
     <link rel="stylesheet" href="/static/css/styles.css">
     <link rel="icon" href="/static/images/logo.svg" type="image/svg+xml">
-    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Roboto+Flex:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manjari&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="index-container">
@@ -28,22 +29,19 @@
             </nav>
         </header>
         
-        <div>
-            <h2 class="curtime">Current Time</h2>
-            <p id="current-time"></p>
+        <div class="main-content">
+            <div class="input-group">
+                <input type="text" id="youtube-link" placeholder="link">
+                <input type="text" id="video-timer" placeholder="HH:MM"> 
+            </div>
+            <div class="input-group">
+                <button class="btn" id="set-timer">Apply settings</button>
+                <button  class="btn" id="play-youtube-video">Play now</button>
+            </div>
         </div>
-
-        <div class="main-content"> <!-- Добавлено -->
-            <div class="input-group"> <!-- Добавлено -->
-                <input type="text" id="youtube-link" placeholder="Paste link:"> <!-- Изменено -->
-                <input type="text" id="video-timer" placeholder="Set time:"> <!-- Изменено -->
-            </div> <!-- Добавлено -->
-            <button class="btn" id="set-timer">Set Time</button>
-            <button  class="btn" id="play-youtube-video">Play</button>
-        </div> <!-- Добавлено -->
-        
+        <p id="current-time"></p>
         <div id="fixed-video-player" class="video-playing">
-            <iframe id="fixed-video-iframe" width="800" height="600" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe id="fixed-video-iframe" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <div id="video-overlay">Your music will play here</div>
         </div>
 
@@ -51,7 +49,7 @@
             <p>Say "Thanks" to developers:</p>
             <div class="like-container">
                 <button id="like-button">
-                    <svg class="like-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="currentColor" viewBox="0 0 24 24">
+                    <svg class="like-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                         <path fill-rule="evenodd" d="M15.03 9.684h3.965c.322 0 .64.08.925.232.286.153.532.374.717.645a2.109 2.109 0 0 1 .242 1.883l-2.36 7.201c-.288.814-.48 1.355-1.884 1.355-2.072 0-4.276-.677-6.157-1.256-.472-.145-.924-.284-1.348-.404h-.115V9.478a25.485 25.485 0 0 0 4.238-5.514 1.8 1.8 0 0 1 .901-.83 1.74 1.74 0 0 1 1.21-.048c.396.13.736.397.96.757.225.36.32.788.269 1.211l-1.562 4.63ZM4.177 10H7v8a2 2 0 1 1-4 0v-6.823C3 10.527 3.527 10 4.176 10Z" clip-rule="evenodd"/>
                     </svg>                                   
                 </button>

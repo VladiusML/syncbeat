@@ -9,14 +9,14 @@
 <body>
     <div class="container">
         <form id="registration-form" class="form-center">
-            <label for="username">Имя пользователя:</label><br>
-            <input type="text" id="username" name="username"><br>
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username" placeholder="SyncBeatEnjoyer"><br>
             <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email"><br>
-            <label for="password">Пароль:</label><br>
-            <input type="password" id="password" name="password"><br><br>
-            <button type="submit">Зарегистрироваться</button>
-            <p style="text-align: center;">Уже есть аккаунт? <a class="nav-link" href="/login">Войти</a></p>
+            <input type="email" id="email" name="email" placeholder="example@mail.com"><br>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" placeholder="your password"><br><br>
+            <button type="submit">Register</button>
+            <p class="small-text centered">Already have account? <a class="nav-link2" href="/login">Log In</a></p>
         </form>
     </div>
     <script>
@@ -39,13 +39,13 @@
                 });
 
                 if (!response.ok) {
-                    throw new Error('Ошибка при регистрации');
+                    throw new Error('Registration error');
                 }
 
                 window.location.href = "/"; // Redirect to home page
             } catch (error) {
                 console.error(error);
-                alert('Произошла ошибка при регистрации');
+                alert('Something went wrong during registration');
             }
         });
     </script>

@@ -5,10 +5,6 @@
     padding: 20px;
 }
 
- 
-
- 
-
 /* Existing styles remain unchanged */
 
 /* howtouse */
@@ -19,7 +15,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     margin: 0;
     padding: 20px;
     box-sizing: border-box;
@@ -31,11 +26,23 @@ body {
 }
 
 .how-to-use-container h1 {
-    font-family: 'Poiret One', cursive;
+    font-family: 'Manjari', sans-serif;
     font-size: 3rem;
     color: #00bfff;
     text-align: center;
     margin-bottom: 90px;
+}
+
+.how-to-use-container h2 {
+    font-family: 'Manjari', sans-serif;
+    color: #00bfff;
+    line-height: 0.2;
+    margin-top: 50px;
+}
+
+.how-to-use-container p {
+    font-family: 'Roboto Flex', sans-serif;
+    font-size: 1rem;
 }
 
 .how-to-use-section {
@@ -43,10 +50,13 @@ body {
 }
 
 h2 {
-    font-family: 'Poiret One', cursive;
-    font-size: 1.8rem;
-    color: #00bfff;
-    margin-bottom: 10px;
+    font-size: 1.4rem;
+    color: #fff;
+}
+
+#current-time {
+    font-size: 5rem;
+    line-height: 1rem;
 }
 
 p {
@@ -72,19 +82,26 @@ p {
 form {
     background-color: #333;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 16px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     width: 300px;
     margin: 0 auto; /* Центрирование формы по горизонтали */
-    text-align: center; /* Центрирование содержимого формы */
+    text-align: left; /* Центрирование содержимого формы */
 }
 
 
 label {
-    font-family: 'Poiret One', cursive;
-    color: #00bfff;
-    font-size: 1.2rem;
+    color: #fff;
+    font-size: 1rem;
+    margin-left: 16px;
     margin-bottom: 5px; /* Отступ между метками и полями ввода */
+}
+.small-text {
+    font-size: 1rem;
+}
+
+.centered {
+    text-align: center;
 }
 
 input {
@@ -92,7 +109,7 @@ input {
     border: 2px solid #00bfff;
     color: #fff;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 16px;
     width: calc(100% - 24px); /* Установим ширину поля ввода, учитывая внутренние отступы */
     margin-bottom: 20px; /* Отступ снизу */
 }
@@ -107,22 +124,12 @@ button {
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
-    border-radius: 12px;
+    border-radius: 16px;
     width: 100%;
 }
 
 
 /* index */
-body {
-    font-family: 'Roboto Flex', sans-serif;
-    background-color: #1b1b1b;
-    color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
 
 .container {
     text-align: center;
@@ -138,7 +145,7 @@ header nav {
 }
 
 .index-container h1 {
-    font-family: 'Poiret One', cursive;
+    font-family: 'Manjari', sans-serif;
     font-size: 3rem;
     color: #00bfff;
     position: absolute; /* Добавлено */
@@ -148,10 +155,15 @@ header nav {
 
 
 .nav-link {
-    font-family: 'Poiret One', cursive;
+    font-family: 'Manjari', sans-serif;
     color: #fff;
     text-decoration: none;
     font-size: 1.2rem;
+}
+
+.nav-link2 {
+    color: #00bfff;
+    text-decoration: none;
 }
 
  
@@ -172,8 +184,8 @@ header nav {
     color: #fff;
     padding: 10px;
     margin: 0 10px;
-    border-radius: 5px;
-    width: 200px;
+    border-radius: 16px;
+    width: 225px;
 }
 
 .btn {
@@ -185,10 +197,10 @@ header nav {
     text-decoration: none;
     display: block; /* Изменение на блочное отображение */
     font-size: 16px;
-    margin: 4px auto; /* Центрирование кнопок по горизонтали */
+    margin: 4px 10px; /* Центрирование кнопок по горизонтали */
     cursor: pointer;
-    border-radius: 12px;
-    width: 350px; /* Фиксированная ширина кнопок */
+    border-radius: 16px;
+    width: 250px; /* Фиксированная ширина кнопок */
 }
 
 .like-container {
@@ -226,11 +238,9 @@ header nav {
 
 #fixed-video-player {
     position: relative;
-    /* Удалите padding-top: 56.25%; */
-    /* Удалите overflow: hidden; */
     max-width: 100%;
     max-height: 90%;
-    border-radius: 10px;
+    border-radius: 16px;
     margin-bottom: 20px;
 
     width: 800px; /* Установим фиксированную ширину */
@@ -245,13 +255,4 @@ header nav {
     transform: translate(-50%, -50%); /* Центрируем текст относительно родительского контейнера */
     color: #00bfff; /* Цвет текста */
 }
-
-
-#fixed-video-iframe {
-    /* Удалите position: absolute; */
-   
-    width: 80%;
-    height: 100%; 
-}
-
 
