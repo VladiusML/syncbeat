@@ -17,43 +17,26 @@ router = APIRouter(
 )
 
 @router.post("/register")
-async def register_user(request: Request, user_data: SUserAuth):
-    existing_user_email = await UsersDAO.find_one_or_none(email=user_data.email)
-    existing_user_username = await UsersDAO.find_one_or_none(username=user_data.username)
+async def register_user(user_data: SUserAuth):
+    existing_user_email = await UsersDAO.find_one_or_none(email = user_data.email)
+    existing_user_username = await UsersDAO.find_one_or_none(username = user_data.username)
     if existing_user_email or existing_user_username:
-        return templates.TemplateResponse("register.html", {
-            "request": request,
-            "error": "Пользователь с таким именем или электронной почтой уже существует"
-        })
+        raise  UserAlreadyExistsException
+    hashed_password = get_password_hash(user_data.password)
 
-    try:
-        hashed_password = get_password_hash(user_data.password)
-        await UsersDAO.add(username=user_data.username, email=user_data.email, hashed_password=hashed_password)
-    except ValueError as e:
-        return templates.TemplateResponse("register.html", {
-            "request": request,
-            "error": str(e)
-        })
-
-    return templates.TemplateResponse("login.html", {"request": request, "message": "Регистрация прошла успешно. Войдите в систему."})
+    await UsersDAO.add(username = user_data.username, email= user_data.email, hashed_password = hashed_password)
 
 @router.post("/login")
-async def login_user(request: Request, response: Response, username: str = Form(...), password: str = Form(...)):
-    user = await authenticate_user(username, password)
+async def login_user(response: Response, user_data: SUserLogin):
+    user = await authenticate_user(user_data.username, user_data.password)
     if not user:
-        return templates.TemplateResponse("login.html", {
-            "request": request,
-            "error": "Неправильное имя пользователя или пароль"
-        })
+        raise IncorrectUsernameOrPasswordException
     access_token = create_access_token({"sub": str(user.id)})
     response.set_cookie("musicdrop_access_token", access_token, httponly=True)
-    return RedirectResponse(url="/", status_code=status.HTTP_303_SEE_OTHER)
-
+    return {"access_token: access_token"} 
 
 @router.post("/logout")
 async def logout_user(response: Response):
     response = RedirectResponse(url="/", status_code=status.HTTP_303_SEE_OTHER)
     response.delete_cookie("musicdrop_access_token", httponly=True)
     return response
-
- 
