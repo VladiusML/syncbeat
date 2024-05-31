@@ -21,7 +21,7 @@ async def get_register(request: Request):
     return templates.TemplateResponse("register.html", {"request": request})
 
 @router.get("/howtouse", response_class=HTMLResponse)
-async def get_register(request: Request):
+async def get_howtouse(request: Request):
     return templates.TemplateResponse("howtouse.html", {"request": request})
 
 @router.get("/login", response_class=HTMLResponse)
