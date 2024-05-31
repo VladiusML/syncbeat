@@ -95,7 +95,7 @@
         fetchTotalLikes();
 
         const userId = "{{ user.id }}";
-        const ws = new WebSocket(`ws://musicdrop-web.onrender.com/ws/like?user_id=${userId}`);
+        const ws = new WebSocket(`wss://musicdrop-web.onrender.com/ws/like?user_id=${userId}`);
 
         ws.onmessage = function(event) {
             const count = parseInt(event.data);
