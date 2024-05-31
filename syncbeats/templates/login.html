@@ -9,10 +9,13 @@
 <body>
     <div class="container">
         <form id="login-form" class="form-center">
+            {% if error %}
+                <p class="error">{{ error }}</p>
+            {% endif %}
             <label for="username">Username:</label><br>
-            <input type="text" id="username" name="username" placeholder="SyncBeatEnjoyer"><br>
+            <input type="text" id="username" name="username" placeholder="SyncBeatEnjoyer" required><br>
             <label for="password">Password:</label><br>
-            <input type="password" id="password" name="password" placeholder="your password"><br><br>
+            <input type="password" id="password" name="password" placeholder="your password" required><br><br>
             <button type="submit">Log In</button>
             <p class="small-text centered">Don't have account? <a class="nav-link2" href="/register">Register</a></p>
         </form>
@@ -36,13 +39,14 @@
                 });
 
                 if (!response.ok) {
-                    throw new Error('Log in error');
+                    const data = await response.json();
+                    throw new Error(data.detail || 'Log in error');
                 }
 
                 window.location.href = "/"; // Redirect to home page
             } catch (error) {
                 console.error(error);
-                alert('Something went wrong during logging in');
+                alert(error.message);
             }
         });
     </script>
