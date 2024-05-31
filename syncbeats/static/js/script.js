@@ -21,7 +21,7 @@ async function fetchTotalLikes() {
 fetchTotalLikes();
 
 const userId = "{{ user.id }}";
-const ws = new WebSocket(`ws://host:8000/ws/like?user_id=${userId}`);
+const ws = new WebSocket(`ws://localhost:9000/ws/like?user_id=${userId}`);
 
 ws.onmessage = function(event) {
     const count = parseInt(event.data);
