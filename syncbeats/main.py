@@ -25,7 +25,7 @@ from redis import asyncio as aioredis
 
 
 origins = [
-    "http://localhost:8000"
+    "https://musicdrop-web.onrender.com"
 ]
 
 @asynccontextmanager
