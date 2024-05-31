@@ -25,7 +25,7 @@ from redis import asyncio as aioredis
 
 
 origins = [
-    "http://localhost:8000"
+    "http://host:8000"
 ]
 
 @asynccontextmanager
