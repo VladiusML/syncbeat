@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, Form, Response, status
+from fastapi import APIRouter, Depends, Form, Request, Response, status
 from fastapi.responses import HTMLResponse, RedirectResponse 
 from exceptions import UserAlreadyExistsException, IncorrectUsernameOrPasswordException
 from syncbeats.users.auth import create_access_token, get_password_hash, authenticate_user
@@ -17,23 +17,38 @@ router = APIRouter(
 )
 
 @router.post("/register")
-async def register_user(user_data: SUserAuth):
-    existing_user_email = await UsersDAO.find_one_or_none(email = user_data.email)
-    existing_user_username = await UsersDAO.find_one_or_none(username = user_data.username)
+async def register_user(request: Request, user_data: SUserAuth):
+    existing_user_email = await UsersDAO.find_one_or_none(email=user_data.email)
+    existing_user_username = await UsersDAO.find_one_or_none(username=user_data.username)
     if existing_user_email or existing_user_username:
-        raise  UserAlreadyExistsException
-    hashed_password = get_password_hash(user_data.password)
+        return templates.TemplateResponse("register.html", {
+            "request": request,
+            "error": "Пользователь с таким именем или электронной почтой уже существует"
+        })
 
-    await UsersDAO.add(username = user_data.username, email= user_data.email, hashed_password = hashed_password)
+    try:
+        hashed_password = get_password_hash(user_data.password)
+        await UsersDAO.add(username=user_data.username, email=user_data.email, hashed_password=hashed_password)
+    except ValueError as e:
+        return templates.TemplateResponse("register.html", {
+            "request": request,
+            "error": str(e)
+        })
+
+    return templates.TemplateResponse("login.html", {"request": request, "message": "Регистрация прошла успешно. Войдите в систему."})
 
 @router.post("/login")
-async def login_user(response: Response, user_data: SUserLogin):
-    user = await authenticate_user(user_data.username, user_data.password)
+async def login_user(request: Request, response: Response, username: str = Form(...), password: str = Form(...)):
+    user = await authenticate_user(username, password)
     if not user:
-        raise IncorrectUsernameOrPasswordException
+        return templates.TemplateResponse("login.html", {
+            "request": request,
+            "error": "Неправильное имя пользователя или пароль"
+        })
     access_token = create_access_token({"sub": str(user.id)})
     response.set_cookie("musicdrop_access_token", access_token, httponly=True)
-    return {"access_token: access_token"} 
+    return RedirectResponse(url="/", status_code=status.HTTP_303_SEE_OTHER)
+
 
 @router.post("/logout")
 async def logout_user(response: Response):

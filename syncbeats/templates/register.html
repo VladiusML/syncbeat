@@ -9,12 +9,15 @@
 <body>
     <div class="container">
         <form id="registration-form" class="form-center">
+            {% if error %}
+                <p class="error">{{ error }}</p>
+            {% endif %}
             <label for="username">Username:</label><br>
-            <input type="text" id="username" name="username" placeholder="SyncBeatEnjoyer"><br>
+            <input type="text" id="username" name="username" placeholder="SyncBeatEnjoyer" required><br>
             <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email" placeholder="example@mail.com"><br>
+            <input type="email" id="email" name="email" placeholder="example@mail.com" required><br>
             <label for="password">Password:</label><br>
-            <input type="password" id="password" name="password" placeholder="your password"><br><br>
+            <input type="password" id="password" name="password" placeholder="your password" required><br><br>
             <button type="submit">Register</button>
             <p class="small-text centered">Already have account? <a class="nav-link2" href="/login">Log In</a></p>
         </form>
@@ -39,13 +42,14 @@
                 });
 
                 if (!response.ok) {
-                    throw new Error('Registration error');
+                    const data = await response.json();
+                    throw new Error(data.detail || 'Registration error');
                 }
 
-                window.location.href = "/login"; // Redirect to home page
+                window.location.href = "/login"; // Redirect to login page
             } catch (error) {
                 console.error(error);
-                alert('Something went wrong during registration');
+                alert(error.message);
             }
         });
     </script>
