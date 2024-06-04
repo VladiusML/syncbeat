@@ -5,3 +5,4 @@ __pycache__/
 .env-render
 .vscode/
 *.code-workspace
+.env-non-dev
