@@ -1,11 +1,7 @@
 .venv/
 .env
-
-
 __pycache__/
 *.pyc
-
 .env-render
-
 .vscode/
 *.code-workspace
