@@ -4,15 +4,17 @@
     <title>Log In</title>
     <link rel="stylesheet" href="/static/css/styles.css">
     <link rel="icon" href="/static/images/logo.svg" type="image/svg+xml">
-    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Roboto+Flex:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manjari&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
+        <a class="back_to_main center_object" href="/">Back to main page</a>
         <form id="login-form" class="form-center">
             <label for="username">Username:</label><br>
             <input type="text" id="username" name="username" placeholder="SyncBeatEnjoyer"><br>
             <label for="password">Password:</label><br>
-            <input type="password" id="password" name="password" placeholder="your password"><br><br>
+            <input class="last_btn" type="password" id="password" name="password" placeholder="your password"><br><br>
             <button type="submit">Log In</button>
             <p class="small-text centered">Don't have account? <a class="nav-link2" href="/register">Register</a></p>
         </form>
