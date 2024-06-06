@@ -108,19 +108,10 @@
 
         playYoutubeVideoButton.addEventListener("click", function() {
         const youtubeLink = youtubeLinkInput.value;
-        const url = new URL(youtubeLink);
-        const videoId = url.searchParams.get("v");
-        const startTimeParam = url.searchParams.get("t");
-        let startTimeInSeconds = 0;
-        if (startTimeParam) {
-            const match = startTimeParam.match(/(\d+)s/);
-            if (match) {
-                startTimeInSeconds = parseInt(match[1]);
-            }
-        }
+        const { videoId, startTimeInSeconds } = parseYouTubeLink(youtubeLink);
 
         if (videoId) {
-            playVideoInFixedPlayer(videoId);
+            playVideoInFixedPlayer(videoId, startTimeInSeconds);
         } else {
             alert("Invalid YouTube video link. Please provide a valid link.");
         }
@@ -134,15 +125,7 @@
             const minutes = parseInt(videoTimeParts[1]);
 
             const youtubeLink = youtubeLinkInput.value;
-            const url = new URL(youtubeLink);
-            const startTimeParam = url.searchParams.get("t");
-            let startTimeInSeconds = 0;
-            if (startTimeParam) {
-                const match = startTimeParam.match(/(\d+)s/);
-                if (match) {
-                    startTimeInSeconds = parseInt(match[1]);
-                }
-            }
+            const { videoId, startTimeInSeconds } = parseYouTubeLink(youtubeLink);
 
             const videoStartTime = new Date();
             videoStartTime.setHours(hours);
@@ -152,7 +135,7 @@
             const adjustedStartTime = videoStartTime.getTime() - startTimeInSeconds * 1000;
 
             const now = new Date().getTime();
-            const difference = adjustedStartTime - now - 2;
+            const difference = adjustedStartTime - now - 3;
 
             if (difference > 0) {
                 clearTimeout(timerId);
@@ -166,9 +149,8 @@
 
         function playVideoAfterTimeout() {
             const youtubeLink = youtubeLinkInput.value;
-            const url = new URL(youtubeLink);
-            const videoId = url.searchParams.get("v");
-            playVideoInFixedPlayer(videoId);
+            const { videoId, startTimeInSeconds } = parseYouTubeLink(youtubeLink);
+            playVideoInFixedPlayer(videoId, startTimeInSeconds);
         }
 
         function updateCurrentTime() {
@@ -181,8 +163,32 @@
         }
 
         setInterval(updateCurrentTime, 1000);
-
         updateCurrentTime();
+        
+        function parseYouTubeLink(url) {
+            let videoId = null;
+            let startTimeInSeconds = 0;
+
+            // Extract video ID
+            let match = url.match(/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/);
+            if (match) {
+                videoId = match[1];
+            }
+
+            // Extract start time
+            match = url.match(/[?&]t=(\d+)(?:s|$)/);
+            if (match) {
+                startTimeInSeconds = parseInt(match[1]);
+            }
+
+            return { videoId, startTimeInSeconds };
+        }
+
+        function formatYouTubeLink(videoId, startTimeInSeconds) {
+            return `https://youtu.be/${videoId}?t=${startTimeInSeconds}`;
+        }
+</script>
+
     </script>
 </body>
 </html>
